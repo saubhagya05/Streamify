@@ -4,8 +4,8 @@
   "description": "Streamify - Video Chat Application",
   "main": "backend/src/server.js",
   "scripts": {
-    "build": "cd frontend && npm install && npm run build && cd ../backend && npm install",
-    "start": "cd backend && npm start",
+    "build": "cd frontend && npm install && npm run build",
+    "start": "cd backend && npm install && npm start",
     "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev\"",
     "install-all": "cd backend && npm install && cd ../frontend && npm install"
   },
