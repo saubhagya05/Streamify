@@ -38,10 +38,11 @@ export async function signup(req, res) {
     });
 
     try {
+      const streamImage = newUser.profilePic?.startsWith("data:") ? "" : (newUser.profilePic || "");
       await upsertStreamUser({
         id: newUser._id.toString(),
         name: newUser.fullName,
-        image: newUser.profilePic || "",
+        image: streamImage,
       });
       console.log(`Stream user created for ${newUser.fullName}`);
     } catch (error) {
@@ -135,10 +136,11 @@ export async function onboard(req, res) {
    if (!updatedUser) return res.status(404).json({ message: "User not found" });
 
     try {
+      const streamImage = updatedUser.profilePic?.startsWith("data:") ? "" : (updatedUser.profilePic || "");
       await upsertStreamUser({
         id: updatedUser._id.toString(),
         name: updatedUser.fullName,
-        image: updatedUser.profilePic || "",
+        image: streamImage,
       });
       console.log(`Stream user updated after onboarding for ${updatedUser.fullName}`);
     } catch (streamError) {

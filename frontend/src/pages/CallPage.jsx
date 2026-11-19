@@ -37,7 +37,7 @@ const CallPage = () => {
 
   useEffect(() => {
     const initCall = async () => {
-      if (!tokenData.token || !authUser || !callId) return;
+      if (!tokenData?.token || !authUser || !callId) return;
 
       try {
         console.log("Initializing Stream video client...");
@@ -45,7 +45,7 @@ const CallPage = () => {
         const user = {
           id: authUser._id,
           name: authUser.fullName,
-          image: authUser.profilePic,
+          image: authUser.profilePic?.startsWith("data:") ? "" : (authUser.profilePic || ""),
         };
 
         const videoClient = new StreamVideoClient({

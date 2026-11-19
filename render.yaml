@@ -17,4 +17,4 @@ services:
       - key: STREAM_API_SECRET
         sync: false
       - key: FRONTEND_URL
-        value: https://streamify-84zv.onrender.com
+        value: https://uprush.in

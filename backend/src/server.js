@@ -20,12 +20,17 @@ const PORT = process.env.PORT || 5001;
 // CORS configuration
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:5173",
+    origin: [
+      process.env.FRONTEND_URL || "http://localhost:5173",
+      "https://uprush.in",
+      "https://www.uprush.in",
+    ],
     credentials: true, // allow frontend to send cookies
   })
 );
 
-app.use(express.json());
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 app.use(cookieParser()); // must be here before auth routes
 
 // API routes

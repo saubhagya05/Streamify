@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router";
 import useAuthUser from "../hooks/useAuthUser";
-import { BellIcon, HomeIcon, ShipWheelIcon, UsersIcon } from "lucide-react";
+import { BellIcon, CompassIcon, HomeIcon, ShipWheelIcon } from "lucide-react";
+import Avatar from "./Avatar";
 
 const Sidebar = () => {
   const { authUser } = useAuthUser();
@@ -30,13 +31,13 @@ const Sidebar = () => {
         </Link>
 
         <Link
-          to="/friends"
+          to="/discover"
           className={`btn btn-ghost justify-start w-full gap-3 px-3 normal-case ${
-            currentPath === "/friends" ? "btn-active" : ""
+            currentPath === "/discover" ? "btn-active" : ""
           }`}
         >
-          <UsersIcon className="size-5 text-base-content opacity-70" />
-          <span>Friends</span>
+          <CompassIcon className="size-5 text-base-content opacity-70" />
+          <span>Discover</span>
         </Link>
 
         <Link
@@ -53,11 +54,7 @@ const Sidebar = () => {
       {/* USER PROFILE SECTION */}
       <div className="p-4 border-t border-base-300 mt-auto">
         <div className="flex items-center gap-3">
-          <div className="avatar">
-            <div className="w-10 rounded-full">
-              <img src={authUser?.profilePic} alt="User Avatar" />
-            </div>
-          </div>
+          <Avatar src={authUser?.profilePic} name={authUser?.fullName} className="size-10 text-sm" />
           <div className="flex-1">
             <p className="font-semibold text-sm">{authUser?.fullName}</p>
             <p className="text-xs text-success flex items-center gap-1">
